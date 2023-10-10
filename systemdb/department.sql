@@ -29,8 +29,9 @@ UPDATE department SET deptname = '경영팀'
 WHERE deptid = 20;
 
 -- 자료 삭제(부서번호가 30번인 마케팅팀 삭제)
+-- 삭제 이상(자식이 참조하고 있으므로 삭제 불가능)
 DELETE FROM department
-WHERE deptid = 30;
+WHERE deptid = 10;
 
 ROLLBACK;   -- 실행취소 COMMIT 전에 실행해야 적용됨
 

@@ -11,8 +11,9 @@ CREATE TABLE employee(
 -- 사원 자료 추가
 INSERT INTO employee(empid, empname, age, deptid)
 VALUES (101, '이강', 27, 10);
+-- 부서코드가 없어서 외래키 제약조건 위배(삽입 이상)
 INSERT INTO employee(empid, empname, age, deptid)
-VALUES (102, '김산', 34, 30);  -- 부서코드가 없어서 외래키 제약조건 위배
+VALUES (102, '김산', 34, 30);
 INSERT INTO employee(empid, empname, deptid)
 VALUES (103, '정들', 20);
 INSERT INTO employee(empid, empname, age, deptid)
@@ -35,6 +36,18 @@ WHERE age > 30;
 -- 나이가 입력되지 않은 사원 검색
 SELECT * FROM employee
 WHERE age is NULL;
+
+-- 문자열 검색(사원이름에서 '강'을 포함하는 사원 검색)
+SELECT * FROM employee
+WHERE empname LIKE '%강%';   --LIKE '%포함하는문자%' -> 포함문자 검색
+
+-- 문자열 검색(사원이름에서 '강'을 포함하거나 또는 나이가 저장되지 않은 사원 검색)
+SELECT * FROM employee
+WHERE empname LIKE '%강%' OR age IS NULL;    --OR(또는) 둘 중 하나만 만족해도
+
+-- 문자열 검색(사원이름에서 '강'을 포함하고 나이가 저장되지 않은 사원 검색)
+SELECT * FROM employee
+WHERE empname LIKE '%강%' AND age IS NULL;   --AND(그리고) 둘 다 만족
 
 -- 부서번호가 20인 사원 검색
 SELECT * FROM employee
