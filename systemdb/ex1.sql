@@ -12,5 +12,5 @@ INSERT INTO ex1 VALUES ('당산', '당산');
 -- 데이터 조회
 SELECT column1, LENGTH(column1), column2, LENGTH(column2) FROM ex1;
 
--- 트랜잭션 : COMMIT, ROLLBACK
+-- 트랜잭션(데이터 영속화) : COMMIT, ROLLBACK
 COMMIT;
