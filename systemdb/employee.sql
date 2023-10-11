@@ -39,7 +39,7 @@ WHERE age is NULL;
 
 -- 문자열 검색(사원이름에서 '강'을 포함하는 사원 검색)
 SELECT * FROM employee
-WHERE empname LIKE '%강%';   --LIKE '%포함하는문자%' -> 포함문자 검색
+WHERE empname LIKE '%강%';   --LIKE '%포함하는문자%', '%우'('우'로 끝나는 문자), '우%'('우'로 시작하는 문자) -> 포함문자 검색
 
 -- 문자열 검색(사원이름에서 '강'을 포함하거나 또는 나이가 저장되지 않은 사원 검색)
 SELECT * FROM employee
