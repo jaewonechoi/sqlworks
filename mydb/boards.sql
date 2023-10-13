@@ -9,7 +9,7 @@ CREATE TABLE boards(
     bfiledata   BLOB                -- BLOB(Binary Large Of Byte) / 4GB
 );
 
--- 시퀀스 생성
+-- 시퀀스 생성(NOCACHE - 저장하지 않음, 초기화되면 1부터 시작함)
 CREATE SEQUENCE seq_bno NOCACHE;
 
 -- 게시글 추가
@@ -20,6 +20,22 @@ INSERT INTO boards (bno, btitle, bcontent, bwriter, bdate, bfilename, bfiledata)
 VALUES (seq_bno.NEXTVAL, 'smartphone', '삼성 갤럭시 s21입니다', 'today', 
             SYSDATE, null, null);
 
-SELECT * FROM boards ORDER BY bdate DESC;
+-- 전체 검색
+SELECT * FROM boards ORDER BY bno DESC;
+
+SELECT * FROM boards WHERE bwriter = 'cloud'
+ORDER BY bno DESC;
+
+-- 글번호 5번의 제목을 '아이폰 15'로 변경
+UPDATE boards 
+SET btitle = '아이폰 15',
+    bcontent = '아이폰 15 제품입니다'
+WHERE bno = 5;
+
+-- 글번호 5번의 자료 삭제
+DELETE FROM boards
+WHERE bno = 5;
+
+ROllBACK;
 
 COMMIT;
