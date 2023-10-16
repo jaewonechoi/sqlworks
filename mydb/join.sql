@@ -2,6 +2,10 @@
 -- 동등조인(equi join) : 조인 조건이 정확히 일치하는 경우에 결과 출력
 -- 외부조인(outer join) : 조인 조건이 정확히 일치하지 않아도 모든 결과를 출력
 
+SELECT * FROM book;
+SELECT * FROM customer;
+SELECT * FROM orders;
+
 -- 고객(customer)과 고객의 주문(orders)에 관한 데이터를 모두 검색하시오
 -- 고객별 주문 금액의 총액을 출력하시오(Group by 결과)
 -- '김연아' 고객의 주문 총금액을 출력(HAVING으로 제한을 둠)
@@ -30,7 +34,7 @@ WHERE cus.custid = ord.custid   -- 기본키 = 외래키
 -- 고객(customer)과 고객의 주문(orders)에 관한 데이터 중 고객의 이름과
 -- 고객이 주문한 도서의 판매가격을 검색하시오
 SELECT cus.name, ord.saleprice 
-FROM customer cus INNER JOIN orders ord
+FROM customer cus INNER JOIN orders ord     --INNER 생략가능
   ON cus.custid = ord.custid
 ORDER BY cus.name;
 
@@ -43,6 +47,14 @@ ORDER BY cus.name;
 SELECT cus.name, ord.saleprice
 FROM customer cus LEFT OUTER JOIN orders ord
   ON cus.custid = ord.custid
+ORDER BY cus.name;
+
+-- 고객(customer)
+-- 고객이름으로 정렬 (자동으로 정렬화 됨)
+-- 카테시안곱 : customer(6) x orders(10) = 60
+SELECT cus.name
+FROM customer cus, orders ord
+WHERE cus.custid = ord.custid
 ORDER BY cus.name;
 
 COMMIT;
