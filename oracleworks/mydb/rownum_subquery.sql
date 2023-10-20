@@ -43,7 +43,7 @@ SELECT ROWNUM, name, score
 FROM (SELECT * FROM ex_score ORDER BY score DESC) 
 WHERE ROWNUM <= 5;
 
--- 성적의 순위 검색하기
+-- 성적의 순위 검색하기  : RANK() OVER(ORDER BY 칼럼명) 이여야함
 SELECT name,
        score,
        RANK() OVER(ORDER BY score DESC) 순위1,

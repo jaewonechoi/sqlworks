@@ -29,6 +29,15 @@ SELECT b.review_no,
 FROM product a JOIN product_review b
 ON a.product_code = b.product_code;
 
+-- 내부조인(INNER JOIN ~ USING)
+SELECT b.review_no,
+       product_code,
+       a.product_name,
+       b.content,
+       b.regdate
+FROM product a JOIN product_review b
+USING (product_code);
+
 -- 리뷰의 유무와 상관없이 모든 상품의 정보를 검색하시오
 -- 외부조인 (LEFT OUTER, RIGHT 조인) - OUTER 생략가능
 SELECT a.product_name,

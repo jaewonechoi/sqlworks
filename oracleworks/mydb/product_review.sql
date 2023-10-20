@@ -40,10 +40,15 @@ SELECT *
 FROM product a, product_review b
 WHERE a.product_code = b.product_code;
 
--- 표준 방식 - 내부조인(INNER JOIN)
+-- 표준 방식 - 내부조인(INNER JOIN ~ ON)
 SELECT *
 FROM product a JOIN product_review b
 ON a.product_code = b.product_code;
+
+-- 내부조인(INNER JOIN ~ USING)
+SELECT *
+FROM product a JOIN product_review b
+USING (product_code);   -- USING 사용시엔 SELECT문에서 별칭 사용x
 
 -- 리뷰 유무에 관계없이 상품의 정보를 검색하시오
 -- 동등조인 방식(product의 상품은 모두 출력되고,

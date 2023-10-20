@@ -62,6 +62,16 @@ FROM department a, employee b
 WHERE a.deptno = b.deptno
 GROUP BY a.deptno, a.deptname;  -- SELECT과 맞춰줘야함
 
+-- employee, department 테이블 사용(동등 조인)
+-- HAVING 이용하여 급여 총액 700만원 이상 검색
+SELECT a.deptno,
+       a.deptname,
+       SUM(sal)
+FROM department a, employee b
+WHERE a.deptno = b.deptno
+GROUP BY a.deptno, a.deptname
+HAVING SUM(sal) >= 7000000;
+
 -- ROLLUP(칼럼1, 칼럼2) : GROUP BY절에서 소계, 총계를 만듬
 SELECT a.deptno,
        a.deptname,
