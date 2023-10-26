@@ -32,6 +32,7 @@ INSERT INTO employee VALUES (105, '우영우', 4000000, SYSDATE, '1002');
 COMMIT;
 
 SELECT * FROM employee;
+SELECT * FROM department;
 
 -- '1002'번 부서이름을 '총무팀'으로 변경하기
 UPDATE department SET deptname = '총무팀'

@@ -6,7 +6,7 @@ SELECT ename 사원이름,
        DECODE(gender, '남자', 'M', 'F') gender
 FROM emp;
 
--- 조건 구문(IF ~ ELSE 와 유사)
+-- 조건 구문(CASE ~ WHEN,THEN ~ ELSE ~ END  -  IF ~ ELSE 와 유사)
 SELECT ename 사원이름,
        gender 성별,
        CASE
