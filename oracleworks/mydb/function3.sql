@@ -6,6 +6,16 @@ SELECT ename 사원이름,
        DECODE(gender, '남자', 'M', 'F') gender
 FROM emp;
 
+SELECT * FROM emp;
+
+/*
+    CASE
+        WHEN 조건1 THEN 결과1
+        WHEN 조건2 THEN 결과2
+        ELSE 결과3
+    END 칼럼명
+*/
+
 -- 조건 구문(CASE ~ WHEN,THEN ~ ELSE ~ END  -  IF ~ ELSE 와 유사)
 SELECT ename 사원이름,
        gender 성별,

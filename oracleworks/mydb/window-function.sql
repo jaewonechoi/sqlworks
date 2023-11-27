@@ -1,0 +1,42 @@
+-- 행 순서 관련 함수
+-- LEAD(칼럼명, 행수) : 하위 행의 값을 상위 행에 출력함
+-- LAG(칼럼명, 행수) : 상위 행의 값을 하위 행에 출력함
+CREATE TABLE EMP_INFO(
+    EMP_NO  VARCHAR2(3),    -- 사원번호
+    NAME    VARCHAR2(20),   -- 사원이름
+    SAL     NUMBER          -- 급여(달러기준)
+);
+
+INSERT INTO EMP_INFO VALUES('100', '김하나', 24000);
+INSERT INTO EMP_INFO VALUES('101', '이하나', 7000);
+INSERT INTO EMP_INFO VALUES('102', '박하나', 8000);
+INSERT INTO EMP_INFO VALUES('103', '정하나', 12000);
+INSERT INTO EMP_INFO VALUES('104', '최하나', 6000);
+INSERT INTO EMP_INFO VALUES('105', '오하나', 15000);
+INSERT INTO EMP_INFO VALUES('106', '임하나', 21000);
+INSERT INTO EMP_INFO VALUES('107', '고하나', 16000);
+INSERT INTO EMP_INFO VALUES('108', '장하나', 9000);
+INSERT INTO EMP_INFO VALUES('109', '윤하나', 13000);
+
+COMMIT;
+SELECT * FROM EMP_INFO;
+
+-- SAL2 - 3행 위로 출력함
+-- SAL3 - NULL인 경우 0으로 표기함
+SELECT EMP_NO,
+       NAME,
+       SAL,
+       LEAD(SAL, 3) OVER(ORDER BY SAL DESC) SAL2,
+       LEAD(SAL, 3, 0) OVER(ORDER BY SAL DESC) SAL3
+FROM EMP_INFO;
+
+-- LAG() OVER()
+-- SAL2 - 3행 아래로 출력함
+SELECT EMP_NO,
+       NAME,
+       SAL,
+       LAG(SAL, 3) OVER(ORDER BY SAL DESC) SAL2,
+       LAG(SAL, 3, 0) OVER(ORDER BY SAL DESC) SAL3
+FROM EMP_INFO;
+
+TRUNCATE TABLE EMP_INFO;

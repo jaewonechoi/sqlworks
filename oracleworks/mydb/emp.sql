@@ -1,4 +1,4 @@
--- emp 테이블 생성
+ -- emp 테이블 생성
 CREATE TABLE emp(
     empno       NUMBER(3) PRIMARY KEY,  -- 사원번호
     ename       VARCHAR2(20) NOT NULL,  -- 사원이름
